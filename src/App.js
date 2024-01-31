@@ -1,22 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import Informations from './components/Informations';
 
 function App() {
+  const [licenceId, setLicenceId] = useState(""); // État pour stocker le numéro de licence
+
+  const handleInputChange = (event) => {
+    setLicenceId(event.target.value); // Mettre à jour l'état avec la valeur du champ de saisie
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <input type="text" value={licenceId} onChange={handleInputChange} />
+        <Informations licenceId={licenceId} /> {/* Passer le numéro de licence variable */}
       </header>
     </div>
   );
